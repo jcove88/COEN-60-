@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<h1>PageRank Tool</h1>
+	</head>
+
+	<body>
+		<p>Use the button below for PageRanks with initial values: PR(Y)=PR(A)=PR(M)=1/3</p>
+		<input type="button" value="Calculate PageRanks" id="button1"></input>
+		<p>Use the button below for PageRanks with initial values: PR(Y)=0.5 PR(A)=0.25 PR(M)=0.25</p>
+		<input type="button" value="Calculate PageRanks" id="button2"></input>
+		<p>Use the button below for PageRanks with initial values: PR(Y)=0.2 PR(A)=0.2 PR(M)=0.6</p>
+		<input type="button" value="Calculate PageRanks" id="button3"></input>
+		<h2>Summary of the final PageRanks calculated after 20 iterations:</h2>
+		<p id="y">Yahoo after 20 iterations =</p>
+		<p id="a">Amazon after 20 iterations  =</p>
+		<p id="m">Microsoft after 20 iterations =</p>
+		<p id="first20"><b>Converged at:</b></p>
+		<h2>Summary of the final PageRanks calculated after 100 iterations:</h2>
+		<p id="yah">Yahoo after 100 iterations =</p>
+		<p id="ama">Amazon after 100 iterations =</p>
+		<p id="mic">Microsoft after 100 iterations =</p>
+		<p id="first100"><b>Congverged at:</b></br></p>
+
+		<script>	
+			window.onload = function() {
+				var button1 = document.getElementById("button1");
+				var button2 = document.getElementById("button2");
+				var button3 = document.getElementById("button3");
+				button1.onclick = pageRank1;
+				button2.onclick = pageRank2;
+				button3.onclick = pageRank3;
+			}
+			function pageRank1(){
+				var pr = (1/3);
+				var y = pr;
+				var a = pr;
+				var m = pr;
+				iterations20(y,a,m);
+				iterations100(y,a,m);
+			}
+			function pageRank2(){
+				var y = (1/2);
+				var a = (1/4);
+				var m = (1/4);
+				iterations20(y,a,m);
+				iterations100(y,a,m);
+			}
+			function pageRank3(){
+				var y = (1/5);
+				var a = (1/5);
+				var m = (3/5);
+				iterations20(y,a,m);
+				iterations100(y,a,m);
+			}
+			function iterations20(y,a,m){	
+				for (var i = 0; i < 20; i++){
+					var y_new = (y * (1/2)) + (a*(1/2)) + (m*0);		
+					var a_new = (y*(1/2)) + (a*0) + (m*1);
+					var m_new = (y*0) + (a*(1/2)) + (m*0);	
+					
+					if(((Math.pow((y-y_new), 2)) + (Math.pow((a-a_new), 2)) + (Math.pow((m-m_new), 2))) <= .001) {
+						document.getElementById("first20").innerHTML="Converged at " + (i+1);
+						document.getElementById("y").innerHTML="PageRank of Yahoo after 20 iterations  = " + y_new;
+						document.getElementById("a").innerHTML="PageRank of Amazon after 20 iterations  = " + a_new;
+						document.getElementById("m").innerHTML="PageRank of Microsoft after 20 iterations  = " + m_new;
+						break;
+					}
+					y = y_new;
+					a = a_new;
+					m = m_new;
+				}
+			}
+			function iterations100(y,a,m){
+				for(var i = 0; i < 100; i++){
+					var y_new = (y * (1/2)) + (a*(1/2)) + (m*0);		
+					var a_new = (y*(1/2)) + (a*0) + (m*1);
+					var m_new = (y*0) + (a*(1/2)) + (m*0);	
+					
+					if(((Math.pow((y-y_new), 2)) + (Math.pow((a-a_new), 2)) + (Math.pow((m-m_new), 2))) <= .001) {
+						document.getElementById("first100").innerHTML="Converged at " + (i+1);
+						document.getElementById("yah").innerHTML="PageRank of Yahoo after 100 iterations  = " + y_new;
+						document.getElementById("ama").innerHTML="PageRank of Amazon after 100 iterations  = " + a_new;
+						document.getElementById("mic").innerHTML="PageRank of Microsoft after 100 iterations  = " + m_new;
+						break;
+					}
+					y = y_new;
+					a = a_new;
+					m = m_new;
+				}
+			}
+		</script>		
+	</body>
+</html>
