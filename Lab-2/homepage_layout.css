@@ -1,0 +1,49 @@
+h2 {
+	border: 1px solid green;	
+	background-color: white;
+	padding: 2px;
+	margin: 1px;		
+	text-align: center;
+	clear: both;
+}
+#scu { 
+	font-weight: bold;
+	color: red;
+}
+*:hover {
+	background: yellow;
+}
+#links{
+	background-color: #cc99ff;
+	padding: 2px 2px 100px;	
+	margin-top: 10px;
+	width: 30%;
+	float: left;
+	clear: left;
+}
+#list {
+	color: white;
+	position: center;
+	background-image: url("https://lh3.googleusercontent.com/m_inYJx9NOcNF_MLafiufh-U6mtxPNoUl2AkTbBPEK-oehezE5ArReHVuoH8ZS7oDj6VspI54OHfBNrZYNcUujCUgvoRo3Fqk1fwW0Luaa1zL4UfA6myeuT8gm7kUNimwRbk8roaFO0=w2400");	
+	background-color: #cccccc;
+	padding: 2px 2px 5px;
+	clear: right;	
+}
+#jazzie {
+	float: right;
+	margin-bottom: 5px;
+}
+.interests {
+	border: 1px solid blue;
+	background-color: #E8FBFB;
+	padding: 5px;
+	margin-top: 10px;
+	width: 65%;
+	float: right;
+	clear: right;
+}
+#page-jump {
+	clear: both;
+	text-align: center;
+	padding-top: 10px;
+}
